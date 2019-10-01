@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { Extension, Group, PersonalVideo } from '@material-ui/icons'
-import { useStlyes } from '../../../../styles/landing/about.styles'
+import { useStyles } from '../../../../styles/landing/about.styles'
 
 export default () => {
   const classes = useStyles()
