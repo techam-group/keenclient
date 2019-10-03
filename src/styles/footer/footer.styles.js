@@ -3,10 +3,10 @@ import { makeStyles } from '@material-ui/core/styles'
 export const useStyles = makeStyles({
   footerMain: {
     background: '#154759',
-    paddingTop: '1rem',
+    paddingTop: '2rem',
     display: 'flex',
     justifyContent: 'space-evenly',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     color: '#f7f7f7',
 
     '& a': {
@@ -29,6 +29,10 @@ export const useStyles = makeStyles({
         lineHeight: 2,
         color: '#76a7b9',
       }
+    },
+
+    '& .MuiGrid-item:nth-child(1)': {
+      alignSelf: 'center'
     }
   },
   footer_cta: {
@@ -38,6 +42,6 @@ export const useStyles = makeStyles({
     backgroundColor: '#133744',
     padding: '1rem',
     color: '#4c99b5',
-    marginTop: '0.5rem'
+    marginTop: '1.5rem'
   }
 })

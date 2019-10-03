@@ -23,8 +23,9 @@ export const useStyles = makeStyles({
       borderBottom: 0
     },
 
-    '&:hover :before': {
-      borderBottom: 0
+    '&:hover .MuiInput-underline:before:not(.Mui-disabled)::before': {
+      borderBottom: 0,
+      borderBottomColor: 'red'
     }
   },
   button: {
