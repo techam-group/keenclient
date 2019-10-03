@@ -6,7 +6,7 @@ export default () => {
   const classes = useStyles()
 
   return (
-    <Grid className={classes.root} justify="center">
+    <Grid className={classes.root}>
       <Grid item className={classes.main}>
         <Typography variant="h3">Connect with other keen learners</Typography>
 
