@@ -38,14 +38,17 @@ export default () => {
       <Grid item>
         <Typography variant="h6">Subscribe</Typography>
 
-        <InputWithButton />
+        <InputWithButton
+          btnText="Join Now"
+          placeholder="Enter your email"
+        />
       </Grid>
       <Grid container className={classes.footer_cta}>
         <Typography>
           keencademics&copy; {' '}
           {moment().format('YYYY')}. {' '}
           Built with ❤️ by <strong>Techam</strong>
-        </Typography> 
+        </Typography>
       </Grid>
     </Grid>
   )
