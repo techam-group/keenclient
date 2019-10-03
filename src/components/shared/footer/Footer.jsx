@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, GridList } from '@material-ui/core';
 import { useStyles } from '../../../styles/footer/footer.styles'
 
 export default () => {
@@ -12,6 +12,10 @@ export default () => {
       </Grid>
       <Grid item>
         <Typography>Links</Typography>
+        <ul>
+          <li>Blog</li>
+          <li>Video</li>
+        </ul>
       </Grid>
       <Grid item>
         <Typography>Subscribe</Typography>
