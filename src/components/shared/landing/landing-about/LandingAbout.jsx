@@ -14,7 +14,7 @@ export default () => {
             <Typography>simplified complex topics</Typography>
           </Grid>
           <Grid item className={classes.gridItems}>
-            <PersonalVideo forwarRef="middle" />
+            <PersonalVideo />
             <Typography>high quality video content</Typography>
           </Grid>
           <Grid item className={classes.gridItems}>
