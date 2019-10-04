@@ -15,6 +15,15 @@ export default () => {
               Keen<span>cademiks</span>
             </Typography>
           </Link>
+          <Link to='/blog'>
+            <Button color="inherit">Blog</Button>
+          </Link>
+          <Link to='/tutorials'>
+            <Button color="inherit">Tutorials</Button>
+          </Link>
+          <Link to='/video'>
+            <Button color="inherit">Video</Button>
+          </Link>
           <Link to='/login'>
             <Button color="inherit">Login</Button>
           </Link>
