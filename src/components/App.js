@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import PrivateRoute from './auth/PrivateRoute'
 
 // Setup the routes
-import Login from './views/Login'
-import Signup from './views/Signup'
-import Home from './views/Home'
-import Dashboard from './views/Dashboard'
-import EmailVerification from './views/EmailVerification'
-import NotFound from './views/NotFound'
+import Login from '../views/Login'
+import Signup from '../views/Signup'
+import Home from '../views/Home'
+import Dashboard from '../views/Dashboard'
+import EmailVerification from '../views/EmailVerification'
+import NotFound from '../views/NotFound'
 
 const App = () => (
   <Router>

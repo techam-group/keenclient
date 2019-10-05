@@ -1,9 +1,9 @@
 import React from 'react';
 import { Grid, CssBaseline } from '@material-ui/core'
-import Header from '../shared/header/Header'
-import LandingAbout from '../shared/landing/landing-about/LandingAbout'
-import ConnectCommunity from '../shared/landing/landing-connect/Connect'
-import Footer from '../shared/footer/Footer'
+import Header from '../components/shared/header/Header'
+import LandingAbout from '../components/shared/landing/landing-about/LandingAbout'
+import ConnectCommunity from '../components/shared/landing/landing-connect/Connect'
+import Footer from '../components/shared/footer/Footer'
 
 const Home = () => {
 	return (
