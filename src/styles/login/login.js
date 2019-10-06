@@ -55,10 +55,24 @@ export const useStyles = makeStyles({
     color: 'white',
     fontWeight: 'bold',
     marginTop: '1rem',
-    
+
+    '&.MuiButton-outlined.Mui-disabled': {
+      background: '#00eac4',
+      border: '1px solid #00eac4'
+    },
+
     '&:hover': {
       border: '1px solid #00bb9c',
       background: '#00bb9c'
+    },
+
+    '& .MuiCircularProgress-indeterminate': {
+      height: '24px !important',
+      width: '24px !important',
+
+      '& svg': {
+        color: 'white'
+      }
     }
   },
   actions: {
@@ -75,5 +89,12 @@ export const useStyles = makeStyles({
     '& :hover': {
       color: '#00bb9c'
     }
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    height: '100%'
   }
 })
