@@ -47,8 +47,9 @@ const Login = () => {
 					<Formik
 						initialValues={initialState}
 						validationSchema={validationSchema}
-						onSubmit={(values, { setSubmitting, resetForm }) => {
-							console.log('submitting', values)
+						onSubmit={(data, { setSubmitting, resetForm }) => {
+							console.log('working...')
+							console.log('submitting', data)
 							resetForm()
 						}}
 						render={({
@@ -119,6 +120,7 @@ const Login = () => {
 										<Button
 											variant="outlined"
 											fullWidth
+											role="submit"
 											disabled={ !isValid || isSubmitting }
 											className={classes.button}>
 											{ isSubmitting ? <CircularProgress />: 'Login'}
