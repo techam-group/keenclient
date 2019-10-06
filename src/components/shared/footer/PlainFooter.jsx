@@ -3,8 +3,8 @@ import { Grid, Typography } from '@material-ui/core'
 import moment from 'moment'
 import { useStyles } from '../../../styles/footer/plainFooter'
 
-export default () => {
-  const classes = useStyles()
+export default (props) => {
+  const classes = useStyles(props)
 
   return (
     <Grid container className={classes.root}>

@@ -9,6 +9,6 @@ export const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    color: 'grey'
+    color: props => props.hasBackground ? '#fcfcfc' : 'grey'
   }
 })
