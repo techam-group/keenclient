@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import { Grid, Paper, TextField, InputAdornment, IconButton, Button, CircularProgress } from '@material-ui/core'
+import { Grid, Paper, TextField, InputAdornment, IconButton, Button, CircularProgress, FormHelperText, FormGroup } from '@material-ui/core'
 import { VisibilityRounded, VisibilityOffRounded, AccountCircleRounded, LockRounded } from '@material-ui/icons'
 import * as yup from 'yup'
 import { Formik } from 'formik'
@@ -45,7 +45,7 @@ const Login = () => {
 					/>
 
 					<Formik
-						initialState={initialState}
+						initialValues={initialState}
 						validationSchema={validationSchema}
 						onSubmit={(values, { setSubmitting, resetForm }) => {
 							console.log('submitting', values)
@@ -63,43 +63,59 @@ const Login = () => {
 						}) => (
 								<form onSubmit={handleSubmit} className={classes.form}>
 									<Grid item xs={12} className={classes.formInputs}>
-										<TextField
-											label="username"
-											name="username"
-											type='text'
-											fullWidth
-											value={username}
-											onChange={handleChange}
-											onBlur={handleBlur}
-											inputProps={{
-												endAdornment: <InputAdornment position="end">
-													<AccountCircleRounded />
-												</InputAdornment>
-											}}
-										/>
-										<TextField
-											label="password"
-											name="password"
-											fullWidth
-											type={showPassword ? 'text' : 'password'}
-											value={password}
-											onChange={handleChange}
-											onBlur={handleBlur}
-											inputProps={{
-												endAdornment: <InputAdornment position="end">
-													<IconButton
-														edge="end"
-														aria-label="toggle password visibility"
-														onClick={handleShowPassword}
-														onMouseDown={handleMouseShowPassword}
-													>
-														{
-															showPassword ? <VisibilityOffRounded /> : <VisibilityRounded />
-														}
-													</IconButton>
-												</InputAdornment>
-											}}
-										/>
+										<FormGroup>
+											<TextField
+												label="username"
+												name="username"
+												type='text'
+												fullWidth
+												error={errors.username && touched.username}
+												value={username}
+												onChange={handleChange}
+												onBlur={handleBlur}
+												InputProps={{
+													endAdornment: <InputAdornment position="end">
+														<AccountCircleRounded />
+													</InputAdornment>
+												}}
+											/>
+											{
+												errors.username && touched.username && (
+													<FormHelperText className={classes.errorFeedback}>{errors.username}</FormHelperText>
+												)
+											}
+										</FormGroup>
+										<FormGroup>
+											<TextField
+												label="password"
+												name="password"
+												fullWidth
+												error={errors.password && touched.password}
+												type={showPassword ? 'text' : 'password'}
+												value={password}
+												onChange={handleChange}
+												onBlur={handleBlur}
+												InputProps={{
+													endAdornment: <InputAdornment position="end">
+														<IconButton
+															edge="end"
+															aria-label="toggle password visibility"
+															onClick={handleShowPassword}
+															onMouseDown={handleMouseShowPassword}
+														>
+															{
+																showPassword ? <VisibilityOffRounded /> : <VisibilityRounded />
+															}
+														</IconButton>
+													</InputAdornment>
+												}}
+											/>
+											{
+												errors.password && touched.password && (
+													<FormHelperText className={classes.errorFeedback}>{errors.password}</FormHelperText>
+												)
+											}
+										</FormGroup>
 										<Button
 											variant="outlined"
 											fullWidth

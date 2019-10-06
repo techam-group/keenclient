@@ -96,5 +96,9 @@ export const useStyles = makeStyles({
     justifyContent: 'space-around',
     alignItems: 'center',
     height: '100%'
+  },
+  errorFeedback: {
+    color: '#d25151',
+    marginBottom: '0.5rem'
   }
 })
