@@ -43,3 +43,9 @@ jobs:
                 now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json
                 now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json alias
               fi
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build
+      - deploy
