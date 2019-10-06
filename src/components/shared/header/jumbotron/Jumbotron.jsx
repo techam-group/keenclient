@@ -1,5 +1,6 @@
 import React from 'react'
-import { Grid, Typography, Button, Link } from '@material-ui/core';
+import { Link } from 'react-router-dom'
+import { Grid, Typography, Button } from '@material-ui/core';
 import { useStyles } from '../../../../styles/header/jumbotron.styles'
 
 export default () => {
