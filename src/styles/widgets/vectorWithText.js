@@ -4,6 +4,8 @@ export const useStyles = makeStyles({
   root: {
     width: '100%',
     height: '28rem',
+    display: 'flex',
+    alignItems: 'center',
 
     '& p': {
       color: 'grey'
@@ -12,10 +14,19 @@ export const useStyles = makeStyles({
   imageHolder: {
     width: '50%',
     height: '100%',
-    background: props => props.imgSrc
+    backgroundImage: props => `url(${props.imgSrc})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
   },
   image: {
     width: '100%',
     height: '100%'
+  },
+  paper: {
+    flexGrow: 1,
+    height: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
