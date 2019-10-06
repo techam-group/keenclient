@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 import { Grid, Typography, Paper, TextField, InputAdornment, IconButton, Button } from '@material-ui/core'
-import { VisibilityRounded, VisibilityOffRounded, AccountCircleRounded } from '@material-ui/icons'
+import { VisibilityRounded, VisibilityOffRounded, AccountCircleRounded, LockRounded } from '@material-ui/icons'
+import PlainFooter from '../components/shared/footer/PlainFooter'
 import { useStyles } from '../styles/login/login'
 
 const initialState = {
@@ -25,12 +27,14 @@ const Login = () => {
 				<Grid item className={classes.imageHolder}>
 				</Grid>
 				<Grid item className={classes.loginHolder}>
-					<div>
-						<Typography variant="h4">Login</Typography>
-						<Typography>keencademiks</Typography>
-					</div>
+					<Grid item className={classes.iconHeader}>
+						<div className="icons">
+							<LockRounded />
+						</div>
+						<Typography>login</Typography>
+					</Grid>
 
-					<div className={classes.formInputs}>
+					<Grid item xs={12} className={classes.formInputs}>
 						<TextField
 							label="Username"
 							name="username"
@@ -45,7 +49,7 @@ const Login = () => {
 							}}
 						/>
 						<TextField
-							label="login"
+							label="password"
 							name="password"
 							fullWidth
 							type={state.showPassword ? 'text' : 'password'}
@@ -66,10 +70,18 @@ const Login = () => {
 								</InputAdornment>
 							}}
 						/>
-						<Button variant="outlined" fullWidth color="primary">Login</Button>
-					</div>
+						<Button variant="outlined" fullWidth className={classes.button}>Login</Button>
+					</Grid>
+				
+					<Grid item className={classes.actions}>
+						<Link to="/forgot-password">forgot password?</Link>
+
+						<Link to="/sign-up">Sign Up</Link>
+					</Grid>
 				</Grid>
 			</Paper>
+
+			<PlainFooter />
 		</Grid>
 	);
 };
