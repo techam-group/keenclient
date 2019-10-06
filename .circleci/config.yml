@@ -35,7 +35,7 @@ jobs:
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
                 now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.production.json
                 now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.production.json alias
-              elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              elif [ "${CIRCLE_BRANCH}" == "development" ]; then
                 now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.staging.json
                 now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.staging.json alias
               else
