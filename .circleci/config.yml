@@ -29,6 +29,9 @@ jobs:
       # - run: yarn build
     deploy:
       steps:
+        - run:
+          name: Install NOW CLI
+          command: sudo npm i -g --unsafe-perm now
         - deploy:
             name: Deploy & Alias
             command: |
