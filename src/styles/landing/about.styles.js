@@ -5,10 +5,14 @@ export const useStyles = makeStyles({
     flexGrow: 1
   },
   main: {
-    height: '50vh',
+    // height: '50vh',
     justifyContent: 'center',
     padding: '4rem',
     backgroundColor: '#f7f7f7',
+
+    '& .MuiGrid-container': {
+      flexDirection: 'column'
+    },
 
     '& > h4': {
       fontSize: '3.3rem',
@@ -18,7 +22,8 @@ export const useStyles = makeStyles({
   itemGrid: {
     justifyContent: 'center',
     alignItems: 'center',
-    display: 'flex'
+    display: 'flex',
+    flexDirection: 'column'
   },
   gridItems: {
     display: 'flex',
