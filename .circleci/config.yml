@@ -33,13 +33,13 @@ jobs:
             name: Deploy & Alias
             command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.production.json
-                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.production.json alias
+                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json
+                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json alias
               elif [ "${CIRCLE_BRANCH}" == "development" ]; then
-                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.staging.json
-                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.staging.json alias
+                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json
+                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json alias
               else
                 ./.now/now.feature.sh
-                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.feature.json
-                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.feature.json alias
+                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json
+                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json alias
               fi
