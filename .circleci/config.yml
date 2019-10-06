@@ -26,4 +26,29 @@ jobs:
       # run tests!
       - run: yarn test
 
-      - run: yarn build
+      # - run: yarn build
+    deploy:
+      steps:
+        - run:
+          name: Install NOW CLI
+          command: sudo npm i -g --unsafe-perm now
+        - deploy:
+            name: Deploy & Alias
+            command: |
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                now --token $ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json
+                now --token $ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json alias
+              elif [ "${CIRCLE_BRANCH}" == "development" ]; then
+                now --token $ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json
+                now --token $ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json alias
+              else
+                ./.now/now.feature.sh
+                now --token $ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json
+                now --token $ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.json alias
+              fi
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build
+      - deploy
