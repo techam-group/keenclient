@@ -26,4 +26,20 @@ jobs:
       # run tests!
       - run: yarn test
 
-      - run: yarn build
+      # - run: yarn build
+    deploy:
+      steps:
+        - deploy:
+            name: Deploy & Alias
+            command: |
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.production.json
+                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.production.json alias
+              elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
+                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.staging.json
+                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.staging.json alias
+              else
+                ./.now/now.feature.sh
+                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.feature.json
+                now --token $REACT_ZEIT_KEENCADEMIKS_TOKEN --local-config .now/now.feature.json alias
+              fi
