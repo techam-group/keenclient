@@ -7,7 +7,10 @@ export const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     display: 'flex',
-    height: '100vh'
+    height: '100vh',
+    background: '#007991',
+    background: '-webkit-linear-gradient(to right, #78ffd6, #007991)',
+    background: 'linear-gradient(to right, #78ffd6, #007991)'
   },
   paper: {
     width: '60%',
@@ -19,7 +22,9 @@ export const useStyles = makeStyles({
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
     width: '70%',
-    height: '100%'
+    height: '100%',
+    borderTopLeftRadius: '2rem',
+    borderBottomLeftRadius: '2rem'
   },
   loginHolder: {
     display: 'flex',
@@ -69,49 +74,6 @@ export const useStyles = makeStyles({
 
     '& :hover': {
       color: '#00bb9c'
-    }
-  },
-  iconHeader: {
-    boxSizing: 'border-box',
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    position: 'relative',
-
-    '& .icons': {
-      borderRadius: '50%',
-      border: '1px solid #acacac',
-      height: '3.5rem',
-      width: '3.5rem',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-
-      '&::before': {
-        content: "''",
-        border: '1px solid #acacac',
-        width: '310%',
-        position: 'absolute',
-        top: '36%'
-      },
-
-      '&::after': {
-        content: "''",
-        border: '1px solid white',
-        width: '93.12%',
-        position: 'absolute',
-        top: '36%'
-      },
-
-      '& svg': {
-        color: '#acacac',
-        fontSize: '2rem',
-        zIndex: 1000
-      }
-    },
-
-    '& p': {
-      color: '#acacac'
     }
   }
 })

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import { Grid, Typography, Paper, TextField, InputAdornment, IconButton, Button } from '@material-ui/core'
+import { Grid, Paper, TextField, InputAdornment, IconButton, Button } from '@material-ui/core'
 import { VisibilityRounded, VisibilityOffRounded, AccountCircleRounded, LockRounded } from '@material-ui/icons'
+import IconHeader from '../components/icon-header/IconHeader'
 import PlainFooter from '../components/shared/footer/PlainFooter'
 import { useStyles } from '../styles/login/login'
 
@@ -27,12 +28,10 @@ const Login = () => {
 				<Grid item className={classes.imageHolder}>
 				</Grid>
 				<Grid item className={classes.loginHolder}>
-					<Grid item className={classes.iconHeader}>
-						<div className="icons">
-							<LockRounded />
-						</div>
-						<Typography>login</Typography>
-					</Grid>
+					<IconHeader
+						leadText="login"
+						icon={<LockRounded />}
+					/>
 
 					<Grid item xs={12} className={classes.formInputs}>
 						<TextField
@@ -81,7 +80,7 @@ const Login = () => {
 				</Grid>
 			</Paper>
 
-			<PlainFooter />
+			<PlainFooter hasBackground />
 		</Grid>
 	);
 };
