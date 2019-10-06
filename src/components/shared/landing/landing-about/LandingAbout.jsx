@@ -12,9 +12,11 @@ export default () => {
       <Grid item xs={12} className={classes.itemGrid}>
         <Grid container justify="center" spacing={8}>
           <Grid item className={classes.gridItems}>
-            <VectorWithText imgSrc={simpleComplexImage} />
-            {/* <Extension />
-            <Typography>simplified complex topics</Typography> */}
+            <VectorWithText
+              imgSrc={simpleComplexImage}
+              headText='Simple'
+              leadText="Learning should be easy, that's why it's important to simplify complex topics, just so we can accelerate our learning."
+            />
           </Grid>
           <Grid item className={classes.gridItems}>
             <PersonalVideo />
