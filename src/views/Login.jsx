@@ -11,8 +11,7 @@ import { useStyles } from '../styles/login/login'
 
 const initialState = {
 	username: '',
-	password: '',
-	showPassword: false
+	password: ''
 }
 
 const validationSchema = yup.object().shape({
@@ -28,11 +27,9 @@ const validationSchema = yup.object().shape({
 
 const Login = () => {
 	const classes = useStyles()
-	const [state, setState] = useState(initialState)
+	const [showPassword, setShowPassword] = useState(false)
 
-	// const handleChange = ({ target: { value, name } }) => setState({ ...state, [name]: value })
-
-	const handleShowPassword = () => setState({ ...state, showPassword: !state.showPassword })
+	const handleShowPassword = () => setShowPassword(!showPassword)
 
 	const handleMouseShowPassword = e => e.preventDefault()
 
@@ -67,14 +64,14 @@ const Login = () => {
 								<form onSubmit={handleSubmit} className={classes.form}>
 									<Grid item xs={12} className={classes.formInputs}>
 										<TextField
-											label="Username"
+											label="username"
 											name="username"
 											type='text'
 											fullWidth
 											value={username}
 											onChange={handleChange}
 											onBlur={handleBlur}
-											InputProps={{
+											inputProps={{
 												endAdornment: <InputAdornment position="end">
 													<AccountCircleRounded />
 												</InputAdornment>
@@ -84,11 +81,11 @@ const Login = () => {
 											label="password"
 											name="password"
 											fullWidth
-											type={state.showPassword ? 'text' : 'password'}
+											type={showPassword ? 'text' : 'password'}
 											value={password}
 											onChange={handleChange}
 											onBlur={handleBlur}
-											InputProps={{
+											inputProps={{
 												endAdornment: <InputAdornment position="end">
 													<IconButton
 														edge="end"
@@ -97,7 +94,7 @@ const Login = () => {
 														onMouseDown={handleMouseShowPassword}
 													>
 														{
-															state.showPassword ? <VisibilityOffRounded /> : <VisibilityRounded />
+															showPassword ? <VisibilityOffRounded /> : <VisibilityRounded />
 														}
 													</IconButton>
 												</InputAdornment>
