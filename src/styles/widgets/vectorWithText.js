@@ -3,14 +3,14 @@ import { makeStyles } from '@material-ui/core/styles'
 export const useStyles = makeStyles({
   root: {
     width: '100%',
-    height: '28rem',
+    height: '20rem',
     display: 'flex',
     alignItems: 'center',
+    flexDirection: props => props.inverted ? 'row-reverse' : 'row',
 
     '& .MuiPaper-rounded:hover': {
-      transform: 'translateX(0px)', 
+      transform: props => props.inverted ? 'translateX(40px)' : 'translateX(-60px)', 
     },
-
 
     '& p': {
       color: 'grey'
@@ -19,6 +19,8 @@ export const useStyles = makeStyles({
   imageHolder: {
     width: '50%',
     height: '100%',
+    marginLeft: props => props.inverted ? 0 : '12%',
+    marginRight: props => props.inverted ? '12%' : 0,
     backgroundImage: props => `url(${props.imgSrc})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center'
@@ -29,7 +31,7 @@ export const useStyles = makeStyles({
   },
   paper: {
     flexGrow: 1,
-    height: '50%',
+    height: '60%',
     maxWidth: '30%',
     display: 'flex',
     flexDirection: 'column',
@@ -37,18 +39,19 @@ export const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    transform: 'translateX(-80px)',
+    transform: props => props.inverted ? 'translateX(60px)' : 'translateX(-80px)',
     transformStyle: 'preserve-3d',
     transition: '0.3s ease-in',
 
     '& h5': {
       fontWeight: 500,
       marginBottom: '1rem',
-      color: '#595959'
+      color: '#494f81'
     },
 
     '& p': {
-      lineHeight: 1.5
+      lineHeight: 1.5,
+      color: '#748da2'
     }
   }
 })

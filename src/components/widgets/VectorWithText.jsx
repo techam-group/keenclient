@@ -2,9 +2,10 @@ import React, { Fragment } from 'react'
 import { Typography, Paper, Grid } from '@material-ui/core'
 import { useStyles } from '../../styles/widgets/vectorWithText'
 
-const VectorWithText = ({ imgSrc, headText, leadText }) => {
+const VectorWithText = ({ imgSrc, headText, leadText, inverted }) => {
   const styleProps = {
-    imgSrc
+    imgSrc,
+    inverted
   }
   const classes = useStyles(styleProps)
 

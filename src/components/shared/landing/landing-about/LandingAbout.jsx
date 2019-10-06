@@ -24,6 +24,7 @@ export default () => {
               imgSrc={QualityVideoImage}
               headText="Quality"
               leadText="Engaging quality video for profound visual learning experience"
+              inverted
             />
           </Grid>
           <Grid item className={classes.gridItems}>
