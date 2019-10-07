@@ -1,13 +1,15 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useMutation } from '@apollo/react-hooks'
 import { VisibilityRounded, VisibilityOffRounded, PermContactCalendarRounded } from '@material-ui/icons'
 import { Grid, TextField, InputAdornment, IconButton, Button, CircularProgress, FormHelperText, FormGroup, Typography } from '@material-ui/core'
 import * as yup from 'yup'
 import { Formik } from 'formik'
+import { ADD_NEW_USER } from '../../helpers/queries.gql'
 
 import IconHeader from '../icon-header/IconHeader'
 import { useStyles } from '../../styles/authPages/signup.styles'
-
+import { ToastMessage, type } from '../toaster/ToastMessage'
 
 const initialState = {
   username: '',
@@ -41,6 +43,7 @@ const validationSchema = yup.object().shape({
 
 const SignupForm = () => {
   const classes = useStyles()
+  const [createUser] = useMutation(ADD_NEW_USER)
 
   const [showPassword, setShowPassword] = useState(false)
 
@@ -61,10 +64,26 @@ const SignupForm = () => {
         <Formik
           initialValues={initialState}
           validationSchema={validationSchema}
-          onSubmit={(data, { setSubmitting, resetForm }) => {
-            console.log('working...')
-            console.log('submitting', data)
-            resetForm()
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
+            try {
+              const { data, error } = await createUser({
+                variables: { ...values }
+              })
+
+              if (error) {
+                ToastMessage(type.ERROR, error.message)
+                setSubmitting(false)
+                console.log('error', error)
+              }
+
+              console.dir('data', data)
+
+              resetForm()
+            } catch (error) {
+              ToastMessage(type.ERROR, error.message)
+              setSubmitting(false)
+              console.log('error', error)
+            }
           }}
           render={({
             values: { username, firstName, lastName, password, email },
