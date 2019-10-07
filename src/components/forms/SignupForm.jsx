@@ -6,7 +6,7 @@ import * as yup from 'yup'
 import { Formik } from 'formik'
 
 import IconHeader from '../icon-header/IconHeader'
-import { useStyles } from '../../styles/authPages/signup'
+import { useStyles } from '../../styles/authPages/signup.styles'
 
 
 const initialState = {

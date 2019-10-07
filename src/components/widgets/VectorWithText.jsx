@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Typography, Paper, Grid } from '@material-ui/core'
-import { useStyles } from '../../styles/widgets/vectorWithText'
+import { useStyles } from '../../styles/widgets/vectorWithText.styles'
 
 const VectorWithText = ({ imgSrc, headText, leadText, inverted }) => {
   const styleProps = {

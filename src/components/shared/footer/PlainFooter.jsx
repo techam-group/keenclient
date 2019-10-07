@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core'
 import moment from 'moment'
-import { useStyles } from '../../../styles/footer/plainFooter'
+import { useStyles } from '../../../styles/footer/plainFooter.styles'
 
 export default (props) => {
   const classes = useStyles(props)
