@@ -9,6 +9,7 @@ import { useMutation } from '@apollo/react-hooks'
 import IconHeader from '../icon-header/IconHeader'
 import { useStyles } from '../../styles/authPages/login.styles'
 import { LOGIN_USER } from '../../helpers/queries.gql'
+import { ToastMessage, type } from '../../components/toaster/ToastMessage'
 
 const initialState = {
   usernameOrEmail: '',
@@ -60,6 +61,7 @@ const LoginForm = () => {
 
               if (error) {
                 console.log('error', error)
+                ToastMessage(type.ERROR, error.message)
                 setSubmitting(false)
                 return 'error'
               }
@@ -71,8 +73,10 @@ const LoginForm = () => {
 
             } catch (error) {
               console.log('error', error)
+              ToastMessage(type.ERROR, error.message)
               setSubmitting(false)
             }
+
           }}
           render={({
             values: { usernameOrEmail, password },
