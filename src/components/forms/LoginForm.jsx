@@ -53,18 +53,11 @@ const LoginForm = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
 
             try {
-              const { data: { loginUser }, error } = await userLogin({
+              const { data: { loginUser } } = await userLogin({
                 variables: { ...values }
               })
 
               const { token } = loginUser
-
-              if (error) {
-                console.log('error', error)
-                ToastMessage(type.ERROR, error.message)
-                setSubmitting(false)
-                return 'error'
-              }
 
               console.log('token', token)
 
@@ -73,7 +66,7 @@ const LoginForm = () => {
 
             } catch (error) {
               console.log('error', error)
-              ToastMessage(type.ERROR, error.message)
+              ToastMessage(type.ERROR, error.message.split(':')[1])
               setSubmitting(false)
             }
 

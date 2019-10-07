@@ -66,21 +66,15 @@ const SignupForm = () => {
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
-              const { data, error } = await createUser({
+              const { data } = await createUser({
                 variables: { ...values }
               })
-
-              if (error) {
-                ToastMessage(type.ERROR, error.message)
-                setSubmitting(false)
-                console.log('error', error)
-              }
 
               console.dir('data', data)
 
               resetForm()
             } catch (error) {
-              ToastMessage(type.ERROR, error.message)
+              ToastMessage(type.ERROR, error.message.split(':')[1])
               setSubmitting(false)
               console.log('error', error)
             }
