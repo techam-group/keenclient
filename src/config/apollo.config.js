@@ -1,4 +1,5 @@
 import ApolloClient, { InMemoryCache } from 'apollo-boost'
+const mode = process.env.NODE_ENV === 'production'
 
 // Get token from localStorage
 const token = localStorage.getItem('keen_token') || ''
@@ -7,7 +8,7 @@ const token = localStorage.getItem('keen_token') || ''
 const cache = new InMemoryCache()
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4044/graphql',
+  uri: mode ? 'https://keenserver.herokuapp.com' : 'http://localhost:4000/graphql',
   cache,
   headers: {
     authorization: token

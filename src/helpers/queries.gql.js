@@ -2,11 +2,11 @@ import { gql } from 'apollo-boost'
 
 export const LOGIN_USER = gql`
   mutation (
-    $email: String!
+    $usernameOrEmail: String!
     $password: String!
   ) {
     loginUser (data: {
-      email: $email
+      usernameOrEmail: $usernameOrEmail
       password: $password
     }) {
       token

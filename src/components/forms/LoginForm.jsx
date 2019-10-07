@@ -9,14 +9,15 @@ import { useMutation } from '@apollo/react-hooks'
 import IconHeader from '../icon-header/IconHeader'
 import { useStyles } from '../../styles/authPages/login.styles'
 import { LOGIN_USER } from '../../helpers/queries.gql'
+import { ToastMessage, type } from '../../components/toaster/ToastMessage'
 
 const initialState = {
-  username: '',
+  usernameOrEmail: '',
   password: ''
 }
 
 const validationSchema = yup.object().shape({
-  username: yup
+  usernameOrEmail: yup
     .string()
     .required('username is required')
     .min(3),
@@ -28,7 +29,7 @@ const validationSchema = yup.object().shape({
 
 const LoginForm = () => {
   const classes = useStyles()
-  const [loginUser] = useMutation(LOGIN_USER)
+  const [userLogin] = useMutation(LOGIN_USER)
 
   const [showPassword, setShowPassword] = useState(false)
 
@@ -49,33 +50,29 @@ const LoginForm = () => {
         <Formik
           initialValues={initialState}
           validationSchema={validationSchema}
-          onSubmit={async (data, { setSubmitting, resetForm }) => {
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
 
             try {
-              const { data: { token }, error, loading } = await loginUser({
-                variables: { ...data }
+              const { data: { loginUser } } = await userLogin({
+                variables: { ...values }
               })
-  
-              if (error) {
-                console.log('error', error)
-                setSubmitting(false)
-                return 'error'
-              }
-  
-              if (loading) return 'loading'
-  
+
+              const { token } = loginUser
+
               console.log('token', token)
-  
+
               setSubmitting(false)
               resetForm()
-              
+
             } catch (error) {
               console.log('error', error)
+              ToastMessage(type.ERROR, error.message.split(':')[1])
               setSubmitting(false)
             }
+
           }}
           render={({
-            values: { username, password },
+            values: { usernameOrEmail, password },
             errors,
             isValid,
             touched,
@@ -88,12 +85,12 @@ const LoginForm = () => {
                 <Grid item xs={12} className={classes.formInputs}>
                   <FormGroup>
                     <TextField
-                      label="username"
-                      name="username"
+                      label="username or email"
+                      name="usernameOrEmail"
                       type='text'
                       fullWidth
-                      error={errors.username && touched.username}
-                      value={username}
+                      error={errors.usernameOrEmail && touched.usernameOrEmail}
+                      value={usernameOrEmail}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       InputProps={{
