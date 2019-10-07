@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Typography } from '@material-ui/core'
-import { useStyles} from '../../styles/icon-header/iconHeader'
+import { useStyles} from '../../styles/icon-header/iconHeader.styles'
 
 export default ({ icon, leadText }) => {
   const classes = useStyles()
