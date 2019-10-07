@@ -4,8 +4,8 @@ import PlainFooter from '../shared/footer/PlainFooter'
 
 import { useStyles } from '../../styles/authLayout/authLayout'
 
-const AuthLayout = ({children}) => {
-	const classes = useStyles()
+const AuthLayout = ({children, ...props}) => {
+	const classes = useStyles(props)
 
 	return (
 		<Grid container className={classes.root}>

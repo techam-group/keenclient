@@ -9,11 +9,12 @@ export const useStyles = makeStyles({
     height: '100vh',
     background: '#007991',
     background: '-webkit-linear-gradient(to right, #78ffd6, #007991)',
-    background: 'linear-gradient(to right, #78ffd6, #007991)'
+    background: props => props.signup ? 'linear-gradient(to right, #abd4ff, #007991)' : 'linear-gradient(to right, #78ffd6, #007991)'
   },
   paper: {
     width: '60%',
-    height: '65vh',
+    minHeight: '65vh',
     display: 'flex',
+    boxSizing: 'border-box'
   }
 })
