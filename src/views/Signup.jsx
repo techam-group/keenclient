@@ -1,10 +1,12 @@
 import React from 'react';
+import AuthLayout from '../components/auth/AuthLayout';
+import SignupForm from '../components/forms/SignupForm';
 
 const Signup = () => {
 	return (
-		<div>
-			<h2>signup here</h2>
-		</div>
+		<AuthLayout signup>
+			<SignupForm />
+		</AuthLayout>
 	);
 };
 
