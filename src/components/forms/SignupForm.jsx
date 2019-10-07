@@ -182,7 +182,7 @@ const SignupForm = () => {
                   <Button
                     variant="outlined"
                     fullWidth
-                    role="submit"
+                    type="submit"
                     disabled={!isValid || isSubmitting}
                     className={classes.button}>
                     {isSubmitting ? <CircularProgress /> : 'sign up'}

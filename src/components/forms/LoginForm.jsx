@@ -4,10 +4,11 @@ import { VisibilityRounded, VisibilityOffRounded, AccountCircleRounded, LockRoun
 import { Grid, TextField, InputAdornment, IconButton, Button, CircularProgress, FormHelperText, FormGroup } from '@material-ui/core'
 import * as yup from 'yup'
 import { Formik } from 'formik'
+import { useMutation } from '@apollo/react-hooks'
 
 import IconHeader from '../icon-header/IconHeader'
 import { useStyles } from '../../styles/authPages/login.styles'
-
+import { LOGIN_USER } from '../../helpers/queries.gql'
 
 const initialState = {
   username: '',
@@ -27,6 +28,7 @@ const validationSchema = yup.object().shape({
 
 const LoginForm = () => {
   const classes = useStyles()
+  const [loginUser] = useMutation(LOGIN_USER)
 
   const [showPassword, setShowPassword] = useState(false)
 
@@ -47,10 +49,30 @@ const LoginForm = () => {
         <Formik
           initialValues={initialState}
           validationSchema={validationSchema}
-          onSubmit={(data, { setSubmitting, resetForm }) => {
-            console.log('working...')
-            console.log('submitting', data)
-            resetForm()
+          onSubmit={async (data, { setSubmitting, resetForm }) => {
+
+            try {
+              const { data: { token }, error, loading } = await loginUser({
+                variables: { ...data }
+              })
+  
+              if (error) {
+                console.log('error', error)
+                setSubmitting(false)
+                return 'error'
+              }
+  
+              if (loading) return 'loading'
+  
+              console.log('token', token)
+  
+              setSubmitting(false)
+              resetForm()
+              
+            } catch (error) {
+              console.log('error', error)
+              setSubmitting(false)
+            }
           }}
           render={({
             values: { username, password },
@@ -120,7 +142,7 @@ const LoginForm = () => {
                   <Button
                     variant="outlined"
                     fullWidth
-                    role="submit"
+                    type="submit"
                     disabled={!isValid || isSubmitting}
                     className={classes.button}>
                     {isSubmitting ? <CircularProgress /> : 'Login'}
