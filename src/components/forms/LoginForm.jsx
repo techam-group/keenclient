@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { VisibilityRounded, VisibilityOffRounded, AccountCircleRounded, LockRounded } from '@material-ui/icons'
 import { Grid, TextField, InputAdornment, IconButton, Button, CircularProgress, FormHelperText, FormGroup } from '@material-ui/core'
 import * as yup from 'yup'
@@ -27,7 +27,7 @@ const validationSchema = yup.object().shape({
     .min(6)
 })
 
-const LoginForm = () => {
+const LoginForm = ({history}) => {
   const classes = useStyles()
   const [userLogin] = useMutation(LOGIN_USER)
 
@@ -62,6 +62,9 @@ const LoginForm = () => {
               console.log('token', token)
 
               setSubmitting(false)
+
+              history.push('/dashboard')
+
               resetForm()
 
             } catch (error) {
@@ -159,4 +162,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default withRouter(LoginForm)
