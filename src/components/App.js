@@ -19,6 +19,7 @@ const App = () => (
         <Route exact path="/sign-up" component={Signup} />
         <Route exact path="/verify-email" component={EmailVerification} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
+        {/* <Route path="/dashboard" component={Dashboard} /> */}
         <Route component={NotFound} />
       </Switch>
     </Fragment>

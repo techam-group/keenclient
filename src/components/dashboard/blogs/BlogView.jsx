@@ -5,7 +5,7 @@ const BlogView = () => {
 
   return (
     <Grid>
-      <Typography variant="h5">BlogView</Typography>
+      <Typography variant="h5">Blog View</Typography>
     </Grid>
   )
 }

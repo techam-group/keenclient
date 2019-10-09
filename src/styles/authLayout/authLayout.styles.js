@@ -7,8 +7,6 @@ export const useStyles = makeStyles({
     justifyContent: 'center',
     display: 'flex',
     height: '100vh',
-    background: '#007991',
-    background: '-webkit-linear-gradient(to right, #78ffd6, #007991)',
     background: props => props.signup ? 'linear-gradient(to right, #abd4ff, #007991)' : 'linear-gradient(to right, #78ffd6, #007991)'
   },
   paper: {

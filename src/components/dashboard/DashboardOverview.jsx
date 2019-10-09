@@ -5,7 +5,7 @@ const DashboardOverview = () => {
 
   return (
     <Grid>
-      <Typography variant="h5">DashboardOverview</Typography>
+      <Typography variant="h5">Dashboard Overview</Typography>
     </Grid>
   )
 }
