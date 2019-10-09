@@ -8,7 +8,7 @@ import MailIcon from '@material-ui/icons/Mail';
 
 import DashboardAppBar from './DashboardAppBar';
 
-import { useStyles } from '../../../styles/dashboard/layouts/dashboardDrawer'
+import { useStyles } from '../../../styles/dashboard/layouts/dashboardDrawer.styles'
 
 const DashboardDrawer = ({ handleOpen, handleClose, isOpen }) => {
   const classes = useStyles();

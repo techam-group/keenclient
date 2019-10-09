@@ -8,7 +8,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
-import { useStyles } from '../../../styles/dashboard/layouts/dashboardAppBar'
+import { useStyles } from '../../../styles/dashboard/layouts/dashboardAppBar.styles'
 
 const DashboardAppBar = ({ handleDrawer, isOpen }) => {
   const classes = useStyles();

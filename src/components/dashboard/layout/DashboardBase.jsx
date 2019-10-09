@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
-import { Grid, CssBaseline, Typography } from '@material-ui/core'
+import { Grid, CssBaseline } from '@material-ui/core'
 
 import DashboardAppBar from './DashboardAppBar'
 import DashboardDrawer from './DashboardDrawer'
 
-import { useStyles } from '../../../styles/dashboard/layouts/dashboardBase'
+import { useStyles } from '../../../styles/dashboard/layouts/dashboardBase.styles'
 
 const DashboardBase = ({ children }) => {
   const classes = useStyles()
