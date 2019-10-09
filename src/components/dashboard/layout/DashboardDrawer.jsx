@@ -11,7 +11,6 @@ import { useStyles } from '../../../styles/dashboard/layouts/dashboardDrawer.sty
 const DashboardDrawer = ({ handleClose, isOpen }) => {
   const classes = useStyles();
   const theme = useTheme();
-  console.log('is open', isOpen)
 
   return (
     <div className={classes.root}>
