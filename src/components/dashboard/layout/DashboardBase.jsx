@@ -1,15 +1,45 @@
-import React from 'react'
-import { Grid, Typography } from '@material-ui/core'
+import React, { useState } from 'react'
+import clsx from 'clsx'
+import { Grid, CssBaseline, Typography } from '@material-ui/core'
+
+import DashboardAppBar from './DashboardAppBar'
+import DashboardDrawer from './DashboardDrawer'
+
+import { useStyles } from '../../../styles/dashboard/layouts/dashboardBase'
 
 const DashboardBase = ({ children }) => {
+  const classes = useStyles()
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
-    <Grid container spacing={2}>
-      <Typography variant="h5">DashboardBase</Typography>
+    <Grid container className={classes.root}>
+      <CssBaseline />
+      <DashboardAppBar
+        handleDrawer={handleOpen}
+        isOpen={open}
+      />
+      <DashboardDrawer
+        handleOpen={handleOpen}
+        handleClose={handleClose}
+        isOpen={open}
+      />
 
-      <Grid item>
+      <main
+        className={clsx(classes.content, {
+          [classes.contentShift]: open,
+        })}
+      >
+        <div className={classes.drawerHeader} />
         {children}
-      </Grid>
+      </main>
     </Grid>
   )
 }
