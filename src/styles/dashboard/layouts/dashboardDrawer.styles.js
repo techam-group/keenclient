@@ -15,6 +15,13 @@ export const useStyles = makeStyles(theme => ({
     color: '#fcfcfc',
     width: drawerWidth,
 
+    '& .MuiList-root': {
+      '& a': {
+        color: '#90d1dd',
+        textDecoration: 'none'
+      }
+    },
+
     '& .MuiListItemIcon-root': {
       color: '#54a6b5'
     }

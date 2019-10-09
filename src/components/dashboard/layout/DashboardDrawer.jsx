@@ -1,16 +1,34 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { useTheme } from '@material-ui/core/styles';
 import { Drawer, CssBaseline, List, Divider, IconButton, ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 
 import { useStyles } from '../../../styles/dashboard/layouts/dashboardDrawer.styles'
+import { drawerItemsOne, drawerItemsTwo } from '../../../helpers/drawerItems'
 
 const DashboardDrawer = ({ handleClose, isOpen }) => {
   const classes = useStyles();
   const theme = useTheme();
+
+  const DrawerItemsOne = drawerItemsOne.map((item, idx) => (
+    <Link to={item.to} key={`${idx}${item}`}>
+      <ListItem button>
+        <ListItemIcon>{item.icon}</ListItemIcon>
+        <ListItemText primary={item.name} />
+      </ListItem >
+    </Link>
+  ))
+
+  const DrawerItemsTwo = drawerItemsTwo.map((item, idx) => (
+    <Link to={item.to} key={`${idx}${item}`}>
+      <ListItem button>
+        <ListItemIcon>{item.icon}</ListItemIcon>
+        <ListItemText primary={item.name} />
+      </ListItem >
+    </Link>
+  ))
 
   return (
     <div className={classes.root}>
@@ -31,21 +49,11 @@ const DashboardDrawer = ({ handleClose, isOpen }) => {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {DrawerItemsOne}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {DrawerItemsTwo}
         </List>
       </Drawer>
     </div>
