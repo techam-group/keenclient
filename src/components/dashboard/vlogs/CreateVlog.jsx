@@ -5,7 +5,7 @@ const CreateVlog = () => {
 
   return (
     <Grid>
-      <Typography variant="h5">CreateVlog</Typography>
+      <Typography variant="h5">Create Vlog</Typography>
     </Grid>
   )
 }
