@@ -104,7 +104,6 @@ const DashboardAppBar = ({ handleDrawer, isOpen }) => {
         <Toolbar>
           <IconButton
             edge="start"
-            className={classes.menuButton}
             onClick={handleDrawer}
             color="inherit"
             aria-label="open drawer"
