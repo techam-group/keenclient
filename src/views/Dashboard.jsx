@@ -13,12 +13,12 @@ import VlogView from '../components/dashboard/vlogs/VlogView'
 const DashboardRoutes = (
 	<Fragment>
 		<Switch>
-			<Route exact path="/" component={DashboardOverview} />
-			<Route exact path="dasboard/create-blog" component={CreateBlog} />
-			<Route exact path="dasboard/blogs" component={AllBlogs} />
+			<Route path="/" component={DashboardOverview} />
+			<Route path="dasboard/create-blog" component={CreateBlog} exact />
+			<Route path="dasboard/blogs" component={AllBlogs} exact />
 			<Route path="dasboard/blogs/:blog-title" component={BlogView} />
-			<Route exact path="dasboard/create-vlog" component={CreateVlog} />
-			<Route exact path="dasboard/vlogs" component={AllVlogs} />
+			<Route path="dasboard/create-vlog" component={CreateVlog} exact />
+			<Route path="dasboard/vlogs" component={AllVlogs} exact />
 			<Route path="dasboard/vlogs/:vlog-title" component={VlogView} />
 		</Switch>
 	</Fragment>

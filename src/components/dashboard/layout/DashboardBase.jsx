@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Typography } from '@material-ui/core'
 
-const DashboardBase = ({children}) => {
+const DashboardBase = ({ children }) => {
 
   return (
     <Grid container spacing={2}>
