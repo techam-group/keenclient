@@ -11,7 +11,13 @@ export const useStyles = makeStyles(theme => ({
     flexShrink: 0,
   },
   drawerPaper: {
+    backgroundColor: '#092024',
+    color: '#fcfcfc',
     width: drawerWidth,
+
+    '& .MuiListItemIcon-root': {
+      color: '#54a6b5'
+    }
   },
   drawerHeader: {
     display: 'flex',
@@ -19,5 +25,10 @@ export const useStyles = makeStyles(theme => ({
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
+    backgroundColor: '#011d22',
+
+    '& .MuiIconButton-label': {
+      color: '#fcfcfc'
+    }
   },
 }));
