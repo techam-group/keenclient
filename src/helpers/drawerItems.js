@@ -1,7 +1,12 @@
 import React from 'react'
-import { EditOutlined, Add, OndemandVideoOutlined, PersonalVideoOutlined } from '@material-ui/icons'
+import { EditOutlined, Add, OndemandVideoOutlined, PersonalVideoOutlined, HomeOutlined } from '@material-ui/icons'
 
 export const drawerItemsOne = [
+  {
+    name: 'My Dashboard',
+    to: '/dashboard',
+    icon: <HomeOutlined />
+  },
   {
     name: 'Create Blog',
     to: '/dashboard/create-blog',
