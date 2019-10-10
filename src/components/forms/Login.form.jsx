@@ -9,7 +9,7 @@ import { useMutation } from '@apollo/react-hooks'
 import IconHeader from '../icon-header/IconHeader'
 import { useStyles } from '../../styles/authPages/login.styles'
 import { LOGIN_USER } from '../../helpers/queries.gql'
-import { ToastMessage, type } from '../../components/toaster/ToastMessage'
+import { ToastMessage, type } from '../toaster/ToastMessage'
 
 const initialState = {
   usernameOrEmail: '',
