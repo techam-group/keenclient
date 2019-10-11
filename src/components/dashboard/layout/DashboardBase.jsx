@@ -9,7 +9,7 @@ import { useStyles } from '../../../styles/dashboard/layouts/dashboardBase.style
 
 const DashboardBase = ({ children }) => {
   const classes = useStyles()
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const handleOpen = () => {
     setOpen(true);
