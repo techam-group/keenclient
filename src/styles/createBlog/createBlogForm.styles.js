@@ -12,13 +12,9 @@ export const useStyles = makeStyles(theme => ({
     color: '#d25151',
     marginBottom: theme.spacing(1)
   },
-  progress: {
-    height: 24,
-    width: 24
-  },
   button: {
-    background: '#00eac4',
-    border: '1px solid #00eac4',
+    background: '#047d93',
+    border: '1px solid #047d93',
     color: 'white',
     fontWeight: 'bold',
     marginTop: '1rem',
@@ -34,8 +30,8 @@ export const useStyles = makeStyles(theme => ({
     },
 
     '&:hover': {
-      border: '1px solid #00bb9c',
-      background: '#00bb9c'
+      border: '1px solid #056779',
+      background: '#056779'
     },
 
     '& .MuiCircularProgress-indeterminate': {
