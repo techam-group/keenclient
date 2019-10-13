@@ -1,11 +1,15 @@
 import React from 'react'
-import { Grid, Typography } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
+import CreateBlogForm from '../../forms/CreateBlog.form'
+
+import { useStyles } from '../../../styles/createBlog/createBlog.styles'
 
 const CreateBlog = () => {
+  const classes = useStyles()
 
   return (
-    <Grid>
-      <Typography variant="h5">Create Blog</Typography>
+    <Grid className={classes.createBlog}>
+      <CreateBlogForm />
     </Grid>
   )
 }

@@ -9,7 +9,7 @@ import { useMutation } from '@apollo/react-hooks'
 import IconHeader from '../icon-header/IconHeader'
 import { useStyles } from '../../styles/authPages/login.styles'
 import { LOGIN_USER } from '../../helpers/queries.gql'
-import { ToastMessage, type } from '../../components/toaster/ToastMessage'
+import { ToastMessage, type } from '../toaster/ToastMessage'
 
 const initialState = {
   usernameOrEmail: '',
@@ -79,23 +79,23 @@ const LoginForm = ({history}) => {
             errors,
             isValid,
             touched,
-            isSubmitting,
             handleBlur,
-            handleChange,
-            handleSubmit
+            handleSubmit,
+            isSubmitting,
+            handleChange
           }) => (
               <form onSubmit={handleSubmit} className={classes.form}>
                 <Grid item xs={12} className={classes.formInputs}>
                   <FormGroup>
                     <TextField
-                      label="username or email"
-                      name="usernameOrEmail"
-                      type='text'
                       fullWidth
-                      error={errors.usernameOrEmail && touched.usernameOrEmail}
+                      type='text'
+                      onBlur={handleBlur}
+                      name="usernameOrEmail"
                       value={usernameOrEmail}
                       onChange={handleChange}
-                      onBlur={handleBlur}
+                      label="username or email"
+                      error={errors.usernameOrEmail && touched.usernameOrEmail}
                       InputProps={{
                         endAdornment: <InputAdornment position="end">
                           <AccountCircleRounded />
