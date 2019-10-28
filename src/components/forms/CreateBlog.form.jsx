@@ -71,18 +71,20 @@ const CreateBlogForm = () => {
           onSubmit={(values, { setSubmitting, resetForm }) => {
             alert('working tho')
 
+            resetForm()
+
             ToastMessage(type.SUCCESS, 'Created blog successfully')
 
             console.log('values are => ', values)
           }}
           render={({
-            values: { title, category, isPublished, body, image },
             errors,
             touched,
             handleBlur,
+            handleSubmit,
             isSubmitting,
             handleChange,
-            handleSubmit
+            values: { title, category, isPublished, body, image },
           }) => (
               <form onSubmit={handleSubmit} autoComplete="off">
                 <div className={classes.formControls}>
@@ -192,8 +194,8 @@ const CreateBlogForm = () => {
                   fullWidth
                   type="submit"
                   variant="contained"
-                  className={classes.button}
                   disabled={isSubmitting}
+                  className={classes.button}
                 >
                   {isSubmitting ? <CircularProgress /> : 'Create Post'}
                 </Button>
