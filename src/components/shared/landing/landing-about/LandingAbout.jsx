@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import VectorWithText from '../../../widgets/VectorWithText'
 import { useStyles } from '../../../../styles/landing/about.styles'
 import simpleComplexImage from '../../../../assets/vector/21424.jpg'
