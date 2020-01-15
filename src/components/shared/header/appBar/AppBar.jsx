@@ -1,10 +1,13 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import {Link, NavLink, useLocation} from 'react-router-dom';
 import { useStyles } from '../../../../styles/header/appBar.styles'
 
 export default () => {
   const classes = useStyles();
+  const location = useLocation();
+
+  const checkActive = (value) => (location.pathname === value ? 'active' : null);
 
   return (
     <div className={classes.root}>
@@ -15,18 +18,30 @@ export default () => {
               Keen<span>cademiks</span>
             </Typography>
           </Link>
-          <Link to='/blog'>
+          <NavLink
+            to='/blog'
+            className={`${checkActive('/blog') ? classes.selected : ''}`}
+          >
             <Button color="inherit">Blog</Button>
-          </Link>
-          <Link to='/tutorials'>
+          </NavLink>
+          <NavLink
+            to='/tutorials'
+            className={`${checkActive('/tutorials') ? classes.selected : ''}`}
+          >
             <Button color="inherit">Tutorials</Button>
-          </Link>
-          <Link to='/video'>
+          </NavLink>
+          <NavLink
+            to='/video'
+            className={`${checkActive('/video') ? classes.selected : ''}`}
+          >
             <Button color="inherit">Video</Button>
-          </Link>
-          <Link to='/login'>
+          </NavLink>
+          <NavLink
+            to='/login'
+            className={`${checkActive('/leadership') ? classes.selected : ''}`}
+          >
             <Button color="inherit">Login</Button>
-          </Link>
+          </NavLink>
         </Toolbar>
       </AppBar>
     </div>

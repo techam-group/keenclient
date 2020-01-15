@@ -28,5 +28,8 @@ export const useStyles = makeStyles(theme => ({
       textDecoration: 'none',
       color: 'inherit'
     }
+  },
+  selected: {
+    borderBottom: '3px solid #25647b'
   }
 }));
