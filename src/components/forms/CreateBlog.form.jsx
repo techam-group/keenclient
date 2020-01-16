@@ -1,36 +1,30 @@
-import React, { Fragment } from 'react'
-import { Formik } from 'formik'
-import * as yup from 'yup'
-import { FormGroup, Grid, Typography, Paper, TextField, FormHelperText, MenuItem, FormControlLabel, Switch, Button, CircularProgress } from '@material-ui/core'
-import { ToastMessage, type } from '../toaster/ToastMessage'
-
+import React, { Fragment } from 'react';
+import { Formik } from 'formik';
+import * as yup from 'yup';
+import { FormGroup, Grid, Typography, Paper, TextField, FormHelperText, MenuItem, FormControlLabel, Switch, Button, CircularProgress } from '@material-ui/core';
+import { ToastMessage, type } from '../toaster/ToastMessage';
 import { useStyles } from '../../styles/createBlog/createBlogForm.styles'
+import {CREATE_BLOG_POST} from "../../helpers/queries.gql";
+import {useMutation} from "@apollo/react-hooks";
 
-const initialState = {
+const initialValues = {
   title: '',
   body: '',
   category: '',
   image: '',
-  isPublished: null,
-  // checkedB: false
-}
+  isPublished: false,
+};
 
 const validationSchema = yup.object().shape({
   title: yup
     .string()
     .required("Blog title is required")
     .min(4),
-  category: yup
-    .string()
-    .min(4),
-  image: yup
-    .string()
-    .min(4),
+  category: yup.string().min(4),
+  image: yup.string().min(4),
   isPublished: yup.boolean(),
-  body: yup
-    .string()
-    .min(4)
-})
+  body: yup.string().min(4)
+});
 
 const categories = [
   {
@@ -53,10 +47,11 @@ const categories = [
     value: "article",
     label: 'Article'
   }
-]
+];
 
 const CreateBlogForm = () => {
-  const classes = useStyles()
+  const classes = useStyles();
+  const [createBlogPost] = useMutation(CREATE_BLOG_POST);
 
   return (
     <Fragment>
@@ -66,26 +61,33 @@ const CreateBlogForm = () => {
         </header>
 
         <Formik
-          initialValues={initialState}
+          initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={(values, { setSubmitting, resetForm }) => {
-            alert('working tho')
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
+            try {
+              await createBlogPost({
+                variables: {...values}
+              });
 
-            resetForm()
-
-            ToastMessage(type.SUCCESS, 'Created blog successfully')
-
-            console.log('values are => ', values)
+              resetForm();
+              ToastMessage(type.SUCCESS, 'Created blog successfully');
+            } catch (e) {
+              console.log('error', e);
+              ToastMessage(type.ERROR, e.message.split(':')[1]);
+              setSubmitting(false)
+            }
           }}
-          render={({
-            errors,
-            touched,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-            handleChange,
-            values: { title, category, isPublished, body, image },
-          }) => (
+        >
+          {
+            ({
+               errors,
+               touched,
+               handleBlur,
+               handleSubmit,
+               isSubmitting,
+               handleChange,
+               values: { title, category, isPublished, body, image },
+             }) => (
               <form onSubmit={handleSubmit} autoComplete="off">
                 <div className={classes.formControls}>
                   <FormGroup>
@@ -164,9 +166,9 @@ const CreateBlogForm = () => {
                     control={
                       <Switch
                         color="primary"
-                        value="checkedB"
+                        value={isPublished}
                         checked={isPublished}
-                        onChange={handleChange('checkedB')}
+                        onChange={handleChange('isPublished')}
                       />
                     }
                     label="Publish Now"
@@ -200,11 +202,12 @@ const CreateBlogForm = () => {
                   {isSubmitting ? <CircularProgress /> : 'Create Post'}
                 </Button>
               </form>
-            )}
-        />
+            )
+          }
+        </Formik>
       </Grid>
     </Fragment>
   )
-}
+};
 
 export default CreateBlogForm

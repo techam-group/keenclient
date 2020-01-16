@@ -45,3 +45,21 @@ export const RESEND_EMAIL_VERIFICATION = gql`
     resendEmailVerification (email: $email)
   }
 `;
+
+export const CREATE_BLOG_POST = gql`
+    mutation (
+        $title: String!
+        $body: String
+        $category: String
+        $image: String
+        $isPublished: Boolean
+    ) {
+        addPost (data: {
+            title: $title
+            body: $body
+            category: $category
+            image: $image
+            isPublished: $isPublished
+        })
+    }
+`;

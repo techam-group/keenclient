@@ -51,7 +51,6 @@ const LoginForm = ({history}) => {
           initialValues={initialState}
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
-
             try {
               const { data: { loginUser } } = await userLogin({
                 variables: { ...values }
@@ -68,7 +67,6 @@ const LoginForm = ({history}) => {
               ToastMessage(type.ERROR, error.message.split(':')[1]);
               setSubmitting(false)
             }
-
           }}
           render={({
             values: { usernameOrEmail, password },

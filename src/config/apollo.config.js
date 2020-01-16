@@ -11,7 +11,7 @@ const client = new ApolloClient({
   uri: mode ? 'https://keenserver.herokuapp.com' : 'http://localhost:4000/graphql',
   cache,
   headers: {
-    authorization: token
+    authorization: `Bearer ${token}`
   }
 });
 

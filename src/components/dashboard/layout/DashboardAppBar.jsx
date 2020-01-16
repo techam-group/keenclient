@@ -153,8 +153,8 @@ const DashboardAppBar = ({ handleDrawer, isOpen }) => {
                 <MailIcon />
               </Badge>
             </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
+            <IconButton aria-label="show 7 new notifications" color="inherit">
+              <Badge badgeContent={7} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
