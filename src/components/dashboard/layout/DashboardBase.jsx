@@ -8,7 +8,7 @@ import DashboardDrawer from './DashboardDrawer'
 import { useStyles } from '../../../styles/dashboard/layouts/dashboardBase.styles'
 
 const DashboardBase = ({ children }) => {
-  const classes = useStyles()
+  const classes = useStyles();
   const [open, setOpen] = useState(true);
 
   const handleOpen = () => {
@@ -42,6 +42,6 @@ const DashboardBase = ({ children }) => {
       </main>
     </Grid>
   )
-}
+};
 
 export default DashboardBase

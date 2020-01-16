@@ -8,7 +8,7 @@ export default ({errText}) => {
   return (
     <div className={classes.error}>
       <WarningIcon/>
-      <h4 style={{fontWeight: 100}}>Oops!! an error occurred. <strong><em>"{errText}"</em></strong>.</h4>
+      <h4 style={{fontWeight: 100}}>Oops!! an error occurred. <strong><em>"{errText.split(":")[1]}"</em></strong>.</h4>
     </div>
   )
 };

@@ -4,6 +4,7 @@ import {useQuery} from "@apollo/react-hooks";
 import {GET_ALL_BLOG_POSTS} from "../../../helpers/postQueries.gql";
 import Error from '../../error/Error.component';
 import Loading from '../../loader/Loading.component';
+import BlogItem from "../../post-item/BlogItem.component";
 
 const AllBlogs = () => {
   const {data, loading, error} = useQuery(GET_ALL_BLOG_POSTS);
@@ -13,12 +14,9 @@ const AllBlogs = () => {
 
   const posts = data && data.getUserPosts;
 
-  const Posts = () =>
-    posts.map(post => (
-      <p key={post.id}>{post.title}</p>
-    ));
+  console.dir('posts', posts)
 
-  console.log('posts', posts);
+  const Posts = () => <BlogItem blogPosts={posts} />;
 
   return (
     <Grid>

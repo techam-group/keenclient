@@ -6,14 +6,8 @@ import { ToastMessage, type } from '../toaster/ToastMessage';
 import { useStyles } from '../../styles/createBlog/createBlogForm.styles'
 import {CREATE_BLOG_POST, GET_ALL_BLOG_POSTS} from "../../helpers/postQueries.gql";
 import {useMutation} from "@apollo/react-hooks";
+import {useLocation} from 'react-router-dom';
 
-const initialValues = {
-  title: '',
-  body: '',
-  category: '',
-  image: '',
-  isPublished: false,
-};
 
 const validationSchema = yup.object().shape({
   title: yup
@@ -45,15 +39,25 @@ const categories = [
   }
 ];
 
-const CreateBlogForm = () => {
+const CreateBlogForm = ({mode, otherProps}) => {
   const classes = useStyles();
+  const {state: {post}} = useLocation();
   const [createBlogPost] = useMutation(CREATE_BLOG_POST);
+
+  const initialValues = {
+    title: post.title || '',
+    body: post.body || '',
+    category: post.category || '',
+    image: post.image || '',
+    isPublished: post.isPublished || false,
+  };
 
   return (
     <Fragment>
       <Grid component={Paper} elevation={1} className={classes.paper}>
         <header>
-          <Typography variant="h5">Create a new blog post</Typography>
+          {mode === "new" && <Typography variant="h5">Create a new blog post</Typography>}
+          {mode === "update" && <Typography variant="h5">Update Post</Typography>}
         </header>
 
         <Formik
@@ -196,7 +200,7 @@ const CreateBlogForm = () => {
                   disabled={isSubmitting}
                   className={classes.button}
                 >
-                  {isSubmitting ? <CircularProgress /> : 'Create Post'}
+                  {isSubmitting ? <CircularProgress /> : (mode === 'new' ? 'Create Post' : 'Update Post')}
                 </Button>
               </form>
             )

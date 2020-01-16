@@ -8,6 +8,6 @@ const DashboardOverview = () => {
       <Typography variant="h5">Dashboard Overview</Typography>
     </Grid>
   )
-}
+};
 
 export default DashboardOverview

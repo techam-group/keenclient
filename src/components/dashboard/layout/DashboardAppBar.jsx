@@ -186,6 +186,6 @@ const DashboardAppBar = ({ handleDrawer, isOpen }) => {
       {renderMenu}
     </div>
   );
-}
+};
 
 export default DashboardAppBar

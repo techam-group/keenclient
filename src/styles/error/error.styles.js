@@ -16,7 +16,7 @@ export const useStyles = makeStyles({
     },
   },
   error: {
-    height: '85vh',
+    height: '75vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

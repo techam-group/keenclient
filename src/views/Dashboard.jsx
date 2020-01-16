@@ -9,18 +9,20 @@ import BlogView from '../components/dashboard/blogs/BlogView'
 import CreateVlog from '../components/dashboard/vlogs/CreateVlog'
 import AllVlogs from '../components/dashboard/vlogs/AllVlogs'
 import VlogView from '../components/dashboard/vlogs/VlogView'
+import UpdateBlog from "../components/dashboard/blogs/UpdateBlog";
 
 const DashboardRoutes = () => (
 	<Switch>
 		<Route path="/dashboard" component={DashboardOverview} exact />
 		<Route path="/dashboard/create-blog" component={CreateBlog} exact />
+		<Route path="/dashboard/update-blog" component={UpdateBlog} exact />
 		<Route path="/dashboard/blogs" component={AllBlogs} exact />
 		<Route path="/dashboard/blogs/:blog_title" component={BlogView} />
 		<Route path="/dashboard/create-vlog" component={CreateVlog} exact />
 		<Route path="/dashboard/vlogs" component={AllVlogs} exact />
 		<Route path="/dashboard/vlogs/:vlog_title" component={VlogView} />
 	</Switch>
-)
+);
 
 const Dashboard = () => (
 	<Router>

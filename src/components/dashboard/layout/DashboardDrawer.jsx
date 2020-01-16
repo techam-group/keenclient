@@ -19,7 +19,7 @@ const DashboardDrawer = ({ handleClose, isOpen }) => {
         <ListItemText primary={item.name} />
       </ListItem >
     </Link>
-  ))
+  ));
 
   const DrawerItemsTwo = drawerItemsTwo.map((item, idx) => (
     <Link to={item.to} key={`${idx}${item}`}>
@@ -28,7 +28,7 @@ const DashboardDrawer = ({ handleClose, isOpen }) => {
         <ListItemText primary={item.name} />
       </ListItem >
     </Link>
-  ))
+  ));
 
   return (
     <div className={classes.root}>
@@ -58,6 +58,6 @@ const DashboardDrawer = ({ handleClose, isOpen }) => {
       </Drawer>
     </div>
   );
-}
+};
 
 export default DashboardDrawer

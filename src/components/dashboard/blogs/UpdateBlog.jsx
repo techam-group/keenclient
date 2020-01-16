@@ -4,14 +4,14 @@ import CreateBlogForm from '../../forms/CreateBlog.form'
 
 import { useStyles } from '../../../styles/createBlog/createBlog.styles'
 
-const CreateBlog = () => {
+const UpdateBlog = () => {
   const classes = useStyles();
 
   return (
     <Grid className={classes.createBlog}>
-      <CreateBlogForm mode={"new"} />
+      <CreateBlogForm mode={"update"} />
     </Grid>
   )
 };
 
-export default CreateBlog
+export default UpdateBlog

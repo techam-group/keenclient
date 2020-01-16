@@ -1,5 +1,6 @@
 import {gql} from "apollo-boost";
 
+// MUTATIONS
 export const CREATE_BLOG_POST = gql`
     mutation (
         $title: String!
@@ -18,6 +19,19 @@ export const CREATE_BLOG_POST = gql`
     }
 `;
 
+export const DELETE_POST = gql`
+    mutation ($id: ID!) {
+        deletePost (id: $id)
+    }
+`;
+
+export const UPDATE_POST_STATUS = gql`
+    mutation ($id: ID!) {
+        changePublishState(id: $id)
+    }
+`;
+
+// QUERIES
 export const GET_ALL_BLOG_POSTS = gql`
     query {
         getUserPosts {
@@ -29,6 +43,9 @@ export const GET_ALL_BLOG_POSTS = gql`
             category
             createdAt
             likes
+            author {
+                username
+            }
         }
     }
 `;
