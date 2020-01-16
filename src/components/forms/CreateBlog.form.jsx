@@ -8,7 +8,6 @@ import {CREATE_BLOG_POST, GET_ALL_BLOG_POSTS} from "../../helpers/postQueries.gq
 import {useMutation} from "@apollo/react-hooks";
 import {useLocation} from 'react-router-dom';
 
-
 const validationSchema = yup.object().shape({
   title: yup
     .string()
@@ -39,17 +38,26 @@ const categories = [
   }
 ];
 
-const CreateBlogForm = ({mode, otherProps}) => {
+const CreateBlogForm = ({mode}) => {
   const classes = useStyles();
-  const {state: {post}} = useLocation();
+  const location = useLocation();
   const [createBlogPost] = useMutation(CREATE_BLOG_POST);
 
-  const initialValues = {
-    title: post.title || '',
-    body: post.body || '',
-    category: post.category || '',
-    image: post.image || '',
-    isPublished: post.isPublished || false,
+  const hasState = !!location.state;
+  const {post} = hasState && location.state;
+
+  const initialValues = hasState ? {
+    title: post.title,
+    body: post.body,
+    category: post.category,
+    image: post.image,
+    isPublished: post.isPublished
+    } : {
+    title: '',
+    body: '',
+    category: '',
+    image: '',
+    isPublished: false,
   };
 
   return (
