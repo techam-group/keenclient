@@ -88,7 +88,7 @@ const BlogItem = ({blogPosts}) => {
                 <span>{post.category}</span>
               </aside>
               <aside className={classes.socials}>
-                <Tooltip title={"edit"} arrow>
+                <Tooltip title={"edit"}>
                   <IconButton onClick={() => handlePostEdit(post)}>
                     <EditIcon/>
                   </IconButton>
