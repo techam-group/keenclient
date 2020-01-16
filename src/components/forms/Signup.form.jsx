@@ -1,12 +1,11 @@
 import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/react-hooks'
 import { VisibilityRounded, VisibilityOffRounded, PermContactCalendarRounded } from '@material-ui/icons'
 import { Grid, TextField, InputAdornment, IconButton, Button, CircularProgress, FormHelperText, FormGroup, Typography } from '@material-ui/core'
 import * as yup from 'yup'
 import { Formik } from 'formik'
 import { ADD_NEW_USER } from '../../helpers/queries.gql'
-
 import IconHeader from '../icon-header/IconHeader'
 import { useStyles } from '../../styles/authPages/signup.styles'
 import { ToastMessage, type } from '../toaster/ToastMessage'
@@ -17,7 +16,7 @@ const initialState = {
   lastName: '',
   password: '',
   email: ''
-}
+};
 
 const validationSchema = yup.object().shape({
   username: yup
@@ -39,17 +38,17 @@ const validationSchema = yup.object().shape({
     .email()
     .required('email is required')
     .min(6)
-})
+});
 
 const SignupForm = () => {
-  const classes = useStyles()
-  const [createUser] = useMutation(ADD_NEW_USER)
+  const classes = useStyles();
+  const history = useHistory();
+  const [createUser] = useMutation(ADD_NEW_USER);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const [showPassword, setShowPassword] = useState(false)
+  const handleShowPassword = () => setShowPassword(!showPassword);
 
-  const handleShowPassword = () => setShowPassword(!showPassword)
-
-  const handleMouseShowPassword = e => e.preventDefault()
+  const handleMouseShowPassword = e => e.preventDefault();
 
   return (
     <Fragment>
@@ -66,16 +65,18 @@ const SignupForm = () => {
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
-              const { data } = await createUser({
+              const { data: { addUser } } = await createUser({
                 variables: { ...values }
-              })
+              });
 
-              console.dir('data', data)
+              const { token } = addUser;
+              localStorage.setItem('keen_token', token);
 
-              resetForm()
+              resetForm();
+              history.push('/dashboard');
             } catch (error) {
-              ToastMessage(type.ERROR, error.message.split(':')[1])
-              setSubmitting(false)
+              ToastMessage(type.ERROR, error.message.split(':')[1]);
+              setSubmitting(false);
               console.log('error', error)
             }
           }}
@@ -213,6 +214,6 @@ const SignupForm = () => {
       </Grid>
     </Fragment>
   )
-}
+};
 
 export default SignupForm

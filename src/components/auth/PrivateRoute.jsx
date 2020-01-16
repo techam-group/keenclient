@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 
 export default ({ component: Component, ...rest }) => {
 	const token = localStorage.getItem('keen_token');
-	const isAuth = token ? token : false;
+	const isAuth = !!token;
 
 	return (
 		<Route
