@@ -25,7 +25,6 @@ const App = () => (
         <Route exact path="/tutorials" component={Tutorials} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route exact path="/verify-email" component={EmailVerification} />
-        {/*<Route path="/dashboard" component={Dashboard} />*/}
         <Route component={NotFound} />
       </Switch>
     </Fragment>
