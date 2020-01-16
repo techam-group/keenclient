@@ -17,7 +17,7 @@ export const drawerItemsOne = [
     to: '/dashboard/blogs',
     icon: <EditOutlined />
   }
-]
+];
 
 export const drawerItemsTwo = [
   {
@@ -30,4 +30,4 @@ export const drawerItemsTwo = [
     to: '/dashboard/vlogs',
     icon: <PersonalVideoOutlined />
   }
-]
+];

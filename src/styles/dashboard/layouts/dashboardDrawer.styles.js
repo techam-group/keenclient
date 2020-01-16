@@ -38,4 +38,11 @@ export const useStyles = makeStyles(theme => ({
       color: '#fcfcfc'
     }
   },
+  selected: {
+    backgroundColor: '#09444f',
+
+    '&:hover': {
+      backgroundColor: '#09444f',
+    }
+  }
 }));

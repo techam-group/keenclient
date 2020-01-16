@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '@material-ui/core/styles';
 import { Drawer, CssBaseline, List, Divider, IconButton, ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -11,10 +11,13 @@ import { drawerItemsOne, drawerItemsTwo } from '../../../helpers/drawerItems'
 const DashboardDrawer = ({ handleClose, isOpen }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const {pathname} = useLocation();
+
+  const isActive = value => (pathname === value ? 'active' : '');
 
   const DrawerItemsOne = drawerItemsOne.map((item, idx) => (
     <Link to={item.to} key={`${idx}${item}`}>
-      <ListItem button>
+      <ListItem button className={`${isActive(item.to) ? classes.selected : null}`}>
         <ListItemIcon>{item.icon}</ListItemIcon>
         <ListItemText primary={item.name} />
       </ListItem >
@@ -23,7 +26,7 @@ const DashboardDrawer = ({ handleClose, isOpen }) => {
 
   const DrawerItemsTwo = drawerItemsTwo.map((item, idx) => (
     <Link to={item.to} key={`${idx}${item}`}>
-      <ListItem button>
+      <ListItem button className={`${isActive(item.to) ? classes.selected : null}`}>
         <ListItemIcon>{item.icon}</ListItemIcon>
         <ListItemText primary={item.name} />
       </ListItem >
