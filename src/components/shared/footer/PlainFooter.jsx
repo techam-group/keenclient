@@ -4,7 +4,7 @@ import moment from 'moment'
 import { useStyles } from '../../../styles/footer/plainFooter.styles'
 
 export default (props) => {
-  const classes = useStyles(props)
+  const classes = useStyles(props);
 
   return (
     <Grid container className={classes.root}>
