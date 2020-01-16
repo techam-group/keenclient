@@ -61,8 +61,8 @@ const LoginForm = ({history}) => {
               localStorage.setItem('keen_token', token);
 
               setSubmitting(false);
+              resetForm();
               history.push('/dashboard');
-              resetForm()
             } catch (error) {
               console.log('error', error);
               ToastMessage(type.ERROR, error.message.split(':')[1]);
