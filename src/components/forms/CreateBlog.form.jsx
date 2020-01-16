@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { FormGroup, Grid, Typography, Paper, TextField, FormHelperText, MenuItem, FormControlLabel, Switch, Button, CircularProgress } from '@material-ui/core';
 import { ToastMessage, type } from '../toaster/ToastMessage';
 import { useStyles } from '../../styles/createBlog/createBlogForm.styles'
-import {CREATE_BLOG_POST} from "../../helpers/postQueries.gql";
+import {CREATE_BLOG_POST, GET_ALL_BLOG_POSTS} from "../../helpers/postQueries.gql";
 import {useMutation} from "@apollo/react-hooks";
 
 const initialValues = {
@@ -40,12 +40,8 @@ const categories = [
     label: 'Series'
   },
   {
-    value: "quiz",
-    label: 'Quiz'
-  },
-  {
-    value: "article",
-    label: 'Article'
+    value: 'vlog',
+    label: 'vlog'
   }
 ];
 
@@ -66,7 +62,8 @@ const CreateBlogForm = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
               await createBlogPost({
-                variables: {...values}
+                variables: {...values},
+                refetchQueries: [{query: GET_ALL_BLOG_POSTS}]
               });
 
               resetForm();
