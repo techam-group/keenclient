@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { FormGroup, Grid, Typography, Paper, TextField, FormHelperText, MenuItem, FormControlLabel, Switch, Button, CircularProgress } from '@material-ui/core';
 import { ToastMessage, type } from '../toaster/ToastMessage';
 import { useStyles } from '../../styles/createBlog/createBlogForm.styles'
-import {CREATE_BLOG_POST} from "../../helpers/queries.gql";
+import {CREATE_BLOG_POST} from "../../helpers/postQueries.gql";
 import {useMutation} from "@apollo/react-hooks";
 
 const initialValues = {
