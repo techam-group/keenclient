@@ -12,11 +12,11 @@ export const LOGIN_USER = gql`
       token
     }
   }
-`
+`;
 
 export const ADD_NEW_USER = gql`
   mutation (
-    $firstName: String!
+    $firstName: String
     $lastName: String
     $username: String!
     $email: String!
@@ -28,18 +28,20 @@ export const ADD_NEW_USER = gql`
       username: $username
       email: $email
       password: $password
-    })
+    }) {
+        token
+    }
   }
-`
+`;
 
 export const VERIFY_EMAIL = gql`
   mutation ($emailToken: String!) {
     verifyEmail (emailToken: $emailToken)
   }
-`
+`;
 
 export const RESEND_EMAIL_VERIFICATION = gql`
   query ($email: String!) {
     resendEmailVerification (email: $email)
   }
-`
+`;

@@ -7,7 +7,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-
+import {MdExitToApp as LogoutIcon} from 'react-icons/md';
 import { useStyles } from '../../../styles/dashboard/layouts/dashboardAppBar.styles'
 
 const DashboardAppBar = ({ handleDrawer, isOpen }) => {
@@ -31,6 +31,14 @@ const DashboardAppBar = ({ handleDrawer, isOpen }) => {
     handleMobileMenuClose();
   };
 
+  const handleLogout = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+
+    localStorage.removeItem('keen_token');
+    window.location.href = '/';
+  };
+
   const handleMobileMenuOpen = event => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
@@ -47,8 +55,7 @@ const DashboardAppBar = ({ handleDrawer, isOpen }) => {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
 
@@ -65,7 +72,7 @@ const DashboardAppBar = ({ handleDrawer, isOpen }) => {
     >
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
+          <Badge badgeContent={2} color="secondary">
             <MailIcon />
           </Badge>
         </IconButton>
@@ -73,7 +80,7 @@ const DashboardAppBar = ({ handleDrawer, isOpen }) => {
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
+          <Badge badgeContent={4} color="secondary">
             <NotificationsIcon />
           </Badge>
         </IconButton>
@@ -89,6 +96,17 @@ const DashboardAppBar = ({ handleDrawer, isOpen }) => {
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
+      </MenuItem>
+      <MenuItem onClick={handleLogout}>
+        <IconButton
+          aria-label="logout current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <LogoutIcon />
+        </IconButton>
+        <p>Logout</p>
       </MenuItem>
     </Menu>
   );

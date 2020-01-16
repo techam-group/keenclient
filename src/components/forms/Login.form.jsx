@@ -14,7 +14,7 @@ import { ToastMessage, type } from '../toaster/ToastMessage'
 const initialState = {
   usernameOrEmail: '',
   password: ''
-}
+};
 
 const validationSchema = yup.object().shape({
   usernameOrEmail: yup
@@ -25,17 +25,17 @@ const validationSchema = yup.object().shape({
     .string()
     .required('password is required')
     .min(6)
-})
+});
 
 const LoginForm = ({history}) => {
-  const classes = useStyles()
-  const [userLogin] = useMutation(LOGIN_USER)
+  const classes = useStyles();
+  const [userLogin] = useMutation(LOGIN_USER);
 
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleShowPassword = () => setShowPassword(!showPassword)
+  const handleShowPassword = () => setShowPassword(!showPassword);
 
-  const handleMouseShowPassword = e => e.preventDefault()
+  const handleMouseShowPassword = e => e.preventDefault();
 
   return (
     <Fragment>
@@ -55,21 +55,17 @@ const LoginForm = ({history}) => {
             try {
               const { data: { loginUser } } = await userLogin({
                 variables: { ...values }
-              })
+              });
 
-              const { token } = loginUser
+              const { token } = loginUser;
+              localStorage.setItem('keen_token', token);
 
-              console.log('token', token)
-
-              setSubmitting(false)
-
-              history.push('/dashboard')
-
-              resetForm()
-
+              setSubmitting(false);
+              resetForm();
+              history.push('/dashboard');
             } catch (error) {
-              console.log('error', error)
-              ToastMessage(type.ERROR, error.message.split(':')[1])
+              console.log('error', error);
+              ToastMessage(type.ERROR, error.message.split(':')[1]);
               setSubmitting(false)
             }
 
@@ -160,6 +156,6 @@ const LoginForm = ({history}) => {
       </Grid>
     </Fragment>
   )
-}
+};
 
 export default withRouter(LoginForm)

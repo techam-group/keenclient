@@ -8,6 +8,6 @@ const Login = () => {
 			<LoginForm />
 		</AuthLayout>
 	)
-}
+};
 
 export default Login
