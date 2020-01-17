@@ -14,8 +14,6 @@ const AllBlogs = () => {
 
   const posts = data && data.getUserPosts;
 
-  console.dir('posts', posts)
-
   const Posts = () => <BlogItem blogPosts={posts} />;
 
   return (
