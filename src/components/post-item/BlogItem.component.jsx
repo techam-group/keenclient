@@ -60,12 +60,16 @@ const BlogItem = ({blogPosts}) => {
     }
   };
 
+  const handleClick = (postId) => {
+    history.push(`/dashboard/blogs/${postId}`)
+  };
+
   return (
     <div className={classes.main}>
       {
         blogPosts.map((post) => (
           <Card className={classes.card} key={post.id}>
-            <CardActionArea>
+            <CardActionArea onClick={() => handleClick(post.id)}>
               <CardMedia
                 component="img"
                 alt={post.title}

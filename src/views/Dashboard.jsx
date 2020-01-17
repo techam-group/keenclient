@@ -17,7 +17,7 @@ const DashboardRoutes = () => (
 		<Route path="/dashboard/create-blog" component={CreateBlog} exact />
 		<Route path="/dashboard/update-blog" component={UpdateBlog} exact />
 		<Route path="/dashboard/blogs" component={AllBlogs} exact />
-		<Route path="/dashboard/blogs/:blog_title" component={BlogView} />
+		<Route path="/dashboard/blogs/:blog_id" component={BlogView} />
 		<Route path="/dashboard/create-vlog" component={CreateVlog} exact />
 		<Route path="/dashboard/vlogs" component={AllVlogs} exact />
 		<Route path="/dashboard/vlogs/:vlog_title" component={VlogView} />

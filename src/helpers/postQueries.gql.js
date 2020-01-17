@@ -65,3 +65,24 @@ export const GET_ALL_PUBLISHED_BLOG_POST = gql`
         }
     }
 `;
+
+export const GET_BLOG_POST = gql`
+    query getPost ($id: ID!) {
+        getPost (id: $id) {
+            id
+            title
+            image
+            category
+            createdAt
+            updatedAt
+            body
+            isPublished
+            likes
+            author {
+                username
+                firstName
+                lastName
+            }
+        }
+    }
+`;
