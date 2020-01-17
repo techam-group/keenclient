@@ -3,6 +3,7 @@ import {gql} from "apollo-boost";
 // MUTATIONS
 export const CREATE_BLOG_POST = gql`
     mutation (
+        $id: ID
         $title: String!
         $body: String
         $category: [categories]
@@ -10,6 +11,7 @@ export const CREATE_BLOG_POST = gql`
         $isPublished: Boolean
     ) {
         addPost (data: {
+            id: $id
             title: $title
             body: $body
             category: $category

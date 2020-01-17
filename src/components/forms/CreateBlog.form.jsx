@@ -45,6 +45,7 @@ const CreateBlogForm = ({mode}) => {
 
   const hasState = !!location.state;
   const {post} = hasState && location.state;
+  const {id} = hasState && post;
 
   const initialValues = hasState ? {
     title: post.title,
@@ -74,7 +75,7 @@ const CreateBlogForm = ({mode}) => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
               await createBlogPost({
-                variables: {...values},
+                variables: {id, ...values},
                 refetchQueries: [{query: GET_ALL_BLOG_POSTS}]
               });
 
