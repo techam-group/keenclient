@@ -19,7 +19,6 @@ const BlogView = () => {
   if (error) return <Error errText={error} />;
 
   const post = data && data.getPost;
-  console.log(post)
 
   return (
     <Grid className={classes.root}>
