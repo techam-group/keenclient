@@ -4,7 +4,7 @@ export const useStyles = makeStyles({
   root: {
     flex: 1,
     width: '80%',
-    margin: '0 auto',
+    margin: '1em auto',
     color: '#464646'
   },
   imageSpace: {
@@ -29,7 +29,7 @@ export const useStyles = makeStyles({
     paddingBottom: '2rem'
   },
   desc: {
-    width: '80%',
+    width: '100%',
 
     '& h3': {
       paddingBottom: '0.3em',
@@ -44,36 +44,11 @@ export const useStyles = makeStyles({
       }
     }
   },
-  actions: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'end',
-    width: '20%',
-
-    '& > div': {
-      display: 'flex',
-      justifyContent: 'end',
-      alignItems: 'center',
-      width: '100%',
-
-      '& h6': {
-        fontSize: '1em'
-      },
-
-      '& button': {
-        color: '#047d93',
-        fontSize: '0.6em',
-        marginLeft: '1.5em'
-      },
-
-      '& .MuiButton-outlined': {
-        border: '1px solid #8bb4bb',
-        padding: '0.5em 0.4em'
-      }
-    }
-  },
   main: {
-    padding: '1em 0'
+    padding: '0.5em 0 1em',
+    lineHeight: '2',
+    fontSize: '1.2em',
+    textAlign: 'justify'
   },
   footer: {
     marginTop: '1em'

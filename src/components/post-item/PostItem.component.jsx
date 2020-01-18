@@ -1,19 +1,34 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useHistory, useLocation} from "react-router-dom";
 import {Card, CardContent, CardMedia, CardActionArea, CardActions, Typography, IconButton} from "@material-ui/core";
 import {TiSocialFacebook as FacebookIcon, TiSocialTwitter as TwitterIcon, TiSocialLinkedin as LinkedInIcon} from 'react-icons/ti';
 import {useStyles} from "../../styles/post-styles/postItem.styles";
-import {truncate} from "../../helpers/utils";
+import {slugify, truncate} from "../../helpers/utils";
 
 const PostItem = ({posts}) => {
   const classes = useStyles();
+  const history = useHistory();
+  const {pathname} = useLocation();
+
+  const handleClick = post => {
+    const slugTitle = slugify(post.title);
+    let path = pathname !== '/' ? `${pathname}/${slugTitle}` : `/${slugTitle}`;
+
+    history.push({
+      pathname: path,
+      state: {
+        postId: post.postId,
+        post: post
+      }
+    })
+  };
 
   return (
     <div className={classes.main}>
       {
         posts.map((post, idx) => (
           <Card className={classes.card} key={idx}>
-            <CardActionArea>
+            <CardActionArea onClick={() => handleClick(post)}>
               <CardMedia
                 component="img"
                 alt={post.title}

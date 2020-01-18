@@ -22,6 +22,10 @@ const BlogView = () => {
 
   return (
     <Grid className={classes.root}>
+      {/*<aside className={classes.imageSpace}>*/}
+      {/*  <section className={classes.imageBox} />*/}
+      {/*  <Typography variant={"caption"}>photo credits: unsplash</Typography>*/}
+      {/*</aside>*/}
       {/*<section>{post.image}</section>*/}
       <header className={classes.header}>
         <aside className={classes.desc}>
