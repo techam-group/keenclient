@@ -23,8 +23,8 @@ const App = () => (
         <Route exact path="/blog" component={Blog} />
         <Route exact path="/blog/:blog_id" component={PostView} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/video" component={Video} />
-        <Route exact path="/video/:vlog_id" component={PublicVlogView} />
+        <Route exact path="/videos" component={Video} />
+        <Route exact path="/videos/:vlog_id" component={PublicVlogView} />
         <Route exact path="/sign-up" component={Signup} />
         <Route exact path="/tutorials" component={Tutorials} />
         <Route exact path="/tutorials/:tutorial_id" component={PostView} />

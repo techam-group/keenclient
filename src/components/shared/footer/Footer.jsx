@@ -7,7 +7,8 @@ import InputWithButton from '../../text-inputs/InputWithButton'
 import { useStyles } from '../../../styles/footer/footer.styles'
 
 export default () => {
-  const classes = useStyles()
+  const classes = useStyles();
+
   return (
     <Grid container className={classes.footerMain}>
       <Grid item>

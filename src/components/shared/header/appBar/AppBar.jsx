@@ -7,7 +7,7 @@ export default () => {
   const classes = useStyles();
   const location = useLocation();
 
-  const checkActive = (value) => (location.pathname === value ? 'active' : null);
+  const checkActive = (value) => (location.pathname.includes(value) ? 'active' : null);
 
   return (
     <div className={classes.root}>
@@ -31,10 +31,10 @@ export default () => {
             <Button color="inherit">Tutorials</Button>
           </NavLink>
           <NavLink
-            to='/video'
-            className={`${checkActive('/video') ? classes.selected : ''}`}
+            to='/videos'
+            className={`${checkActive('/videos') ? classes.selected : ''}`}
           >
-            <Button color="inherit">Video</Button>
+            <Button color="inherit">Videos</Button>
           </NavLink>
           <NavLink
             to='/login'
