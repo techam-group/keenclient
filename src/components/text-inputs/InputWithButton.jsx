@@ -3,7 +3,7 @@ import { Input, Button } from '@material-ui/core'
 import { useStyles } from '../../styles/text-inputs/inputWithButton.styles'
 
 const InputWithButton = ({ btnText, placeholder }) => {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Fragment>
@@ -13,6 +13,6 @@ const InputWithButton = ({ btnText, placeholder }) => {
       </div>
     </Fragment>
   )
-}
+};
 
 export default InputWithButton
