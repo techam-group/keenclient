@@ -15,6 +15,7 @@ import EmailVerification from '../views/EmailVerification';
 import PostView from "./post-item/PostView.component";
 import PublicVlogView from "./post-item/PublicVlogView.component";
 import ContactUs from "../views/ContactUs";
+import AboutUs from "../views/AboutUs";
 
 const App = () => (
   <Router>
@@ -32,6 +33,7 @@ const App = () => (
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route exact path="/verify-email" component={EmailVerification} />
         <Route exact path="/contact-us" component={ContactUs} />
+        <Route exact path="/about" component={AboutUs} />
         <Route component={NotFound} />
       </Switch>
     </Fragment>
