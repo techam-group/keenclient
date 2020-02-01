@@ -186,11 +186,13 @@ const CreateBlogForm = ({mode}) => {
                 </FormGroup>
                 <FormGroup>
                   <TextField
-                    rowsMax='4'
+                    rows='6'
                     multiline
                     name='body'
                     value={body}
+                    label={"Post Body"}
                     onBlur={handleBlur}
+                    className={classes.body}
                     onChange={handleChange}
                   />
                   {
